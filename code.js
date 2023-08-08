@@ -10,4 +10,4 @@ function get_random_image() {
     return selected_image;
 }
 
-document.getElementById.src = "url('" + get_random_image() + "')";
+document.getElementById('homeph').src = "url('" + get_random_image() + "')";
