@@ -9,5 +9,3 @@ function get_random_image() {
     const selected_image = image_array[random_index];
     return selected_image;
 }
-
-document.getElementById("homeph").src = get_random_image();
