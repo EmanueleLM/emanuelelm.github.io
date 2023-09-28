@@ -24,7 +24,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   <!-- Avatar image in top left corner -->
-  <img src="/img/foto.jpg" style="width:100%">
+  <img src="/img/foto.jpg" style="height:1024px;width:720px;">
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
     <i class="fa fa-home w3-xxlarge"></i>
     <p>HOME</p>
@@ -54,36 +54,41 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <!-- Header/Home -->
   <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
     <h1 class="w3-jumbo"><span class="w3-hide-small">Emanuele La Malfa</h1>
-    <img id="homeph" src="/img/lagna1.jpeg" alt="boy" class="w3-image" width="992" height="1108">
+    <img id="homeph" src="" alt="boy" class="w3-image" width="992" height="1108">
     <figcaption>Home? Where is home?</figcaption>
   </header>
 
   <!-- About Section -->
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey">About Me</h2>
+    <h2 class="w3-text-light-grey">About</h2>
     <hr style="width:200px" class="w3-opacity">
-    <p>I'm a postdoc at the University of Oxford: I work on Language Models with <a href='https://www.cs.ox.ac.uk/people/michael.wooldridge/'>Prof. Michael Wooldridge</a>. 
-      I have been a DPhil/Ph.D. student at the same institution from 2019 to 2023: I have been supervised by <a href='https://www.cs.ox.ac.uk/people/marta.kwiatkowska/'>Prof. Marta Kwiatkowska</a>.
-      I have worked - and am currently working- on robustness as a property intersecting Natural Language Processing (NLP), computational linguistics 
-      , and linguistics. Please reach out via email for anything. If you are interested, you can download my resume, scroll through this page and click the right button :) 
-      Finally, I contributed to a few publications; you can check them out at <a href='https://scholar.google.com/citations?user=4_91m08AAAAJ&hl=en'>this link</a>.
+    <p>I'm a post doctoral researcher at the University of Oxford and at the Alan Turing Institute: I work on benchmarking Language Models with
+       <a href='https://www.cs.ox.ac.uk/people/michael.wooldridge/'>Prof. Michael Wooldridge</a> and 
+       <a href='https://www.jesus.ox.ac.uk/about-jesus-college/our-community/people/nigel-shadbolt/'>Prof. Nigel Shadbolt</a>. 
+       I am still a Ph.D. student at the same institution: my journey started in 2019 and is expected to end soon. I have been lucky to be supervised by
+       <a href='https://www.cs.ox.ac.uk/people/marta.kwiatkowska/'>Prof. Marta Kwiatkowska</a>.
+      During my Ph.D. I worked on robustness as a property intersecting Natural Language Processing (NLP), computational linguistics,
+        and linguistics. If you desire to know what I discovered during my Ph.D., is that (I hold the opinion that) robustness as formulated by the machine 
+        learning community is <a href="https://arxiv.org/pdf/2112.07605.pdf">ill-posed</a> for language. Beyond that, I am interested in how syntax and semantics 
+        concur at definying meaning. You can contact me via email (for anything, really). If you are interested, you can also download my resume; 
+        Scroll through this page and click the download button :) Here's <a href='https://scholar.google.com/citations?user=4_91m08AAAAJ&hl=en'>a list</a> of publications I contributed to.
     </p>
     
     <button class="w3-button w3-light-grey w3-padding-large w3-section" type="submit" onclick="window.open('/doc/cv.pdf')">
       <i class="fa fa-download"></i> Download Resume
     </button>
        
-    <!-- Testimonials
-    <h3 class="w3-padding-24 w3-text-light-grey">My Reputation</h3>  
-    <img src="/w3images/bandmember.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
-    <p><span class="w3-large w3-margin-right">Chris Fox.</span> CEO at Mighty Schools.</p>
-    <p>John Doe saved us from a web disaster.</p><br>
-    
-    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
-    <p><span class="w3-large w3-margin-right">Rebecca Flex.</span> CEO at Company.</p>
-    <p>No one is better than John Doe.</p> -->
-  <!-- End About Section -->
   </div>
+
+    <!-- News Section -->
+    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="news">
+      <h2 class="w3-text-light-grey">News</h2>
+      <hr style="width:200px" class="w3-opacity">
+      <ul>
+        <li>Our paper <a href="https://arxiv.org/pdf/2305.15425.pdf">Language Tokenizers Introduce Unfairness Between Languages</a> has been accepted at NeurIPS'23.</li>
+        <li>Our preprint <a href="">The ARRT of Language Models as a Service: Overview of a New Paradigm and it its Challenges</a> is available online.</li>
+      </ul>   
+    </div>
 
   <!-- Contact Section -->
   <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
@@ -97,35 +102,11 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     </div>
     </div>
 
-    <!-- <p>Let's get in touch. Send me a message:</p>
-
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
-      <p>
-        <button class="w3-button w3-light-grey w3-padding-large" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </button>
-      </p>
-    </form>
-  <!-- End Contact Section -->
-  <!-- </div> -->
-  
-    <!-- Footer -->
   <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i> -->
-    <!-- <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i> -->
     <a class="fa fa-twitter w3-hover-opacity" href="https://twitter.com/iperboreo_"></a>
     <a class="fa fa-linkedin w3-hover-opacity" href="https://www.linkedin.com/in/emanuele-la-malfa-7769b6129/"></a>
-    <!-- <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p> -->
-  <!-- End footer -->
   </footer>
 
-<!-- END PAGE CONTENT -->
 </div>
 
 </body>
