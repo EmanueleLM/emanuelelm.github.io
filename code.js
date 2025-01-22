@@ -3,8 +3,7 @@ function get_random_image() {
       '/img/lagna.jpeg',
       '/img/lagna1.jpeg',
       '/img/sangiulio.jpeg',
-      '/img/mottarone.jpg',
-      'img/gatozzo.jpeg'
+      '/img/mottarone.jpg'
     ];
     const random_index = Math.floor(Math.random() * image_array.length);
     const selected_image = image_array[random_index];
