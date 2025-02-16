@@ -104,6 +104,17 @@
                   </a>
                 </span>
 
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/EmanueleLM/CodeSimulation" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Complementary Code (Appendix)</span>
+                  </a>
+                </span>
+
             </div>
           </div>
         </div>
@@ -135,19 +146,20 @@
 <!-- End paper abstract -->
 
 <!-- Key points -->
-<section class="section hero is-light">
+<section class="section hero">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Points</h2>
+        <h2 class="title is-3">Key Takeaways</h2>
         <div class="content has-text-justified">
           <p>
             For many reasoning tasks, code simulation is a proxy to measure a model's capabilities that:
             <ul>
-              <li>Scales better as it does not require manual data labelling/handcrafting.</li>
-              <li>Draws a parallelism between code simulation and (algorithmic) reasoning.</li>
-              <li>Evidences relevant failure cases of LLMs.</li>
+              <li>Scales better as it does not require manual data labelling/handcrafting - Section 3 -.</li>
+              <li>Draws a parallelism between code simulation and (algorithmic) reasoning - Section 4 -.</li>
+              <li>Evidences relevant failure cases of LLMs - see Sections 4.2 and Appendix-.</li>
             </ul>
+            In summary, our work is a step towards automating benchmarking of LLMs on reasoning tasks with automated procedures.
           </p>
         </div>
       </div>
@@ -156,11 +168,11 @@
 </section>
 <!-- End Key points -->
 
-
-<!-- Image carousel -->
+<!-- Image carousel - framework -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
+      <h2 class="title">Framework</h2>
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
         <!-- Your image here -->
@@ -174,25 +186,38 @@
         <img src="static/images/im2.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
           We propose five synthetic and naturalistic tasks. 
-          Straight line code simulation and Good exchange.
-          Critical path and Critical good exchange. 
-          Parallel path and Clique good exchange.
-          Sorting and Ranking objects.
-          Nested loops and Recurring calculation.
+          I. Straight line code simulation and Good exchange.
+          II. Critical path and Critical good exchange. 
+          III. Parallel path and Clique good exchange.
+          IV. Sorting and Ranking objects.
+          V. Nested loops and Recurring calculation.
         </h2>
       </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+
+<!-- Image carousel - results -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Results</h2>
+      <div id="results-carousel" class="carousel results-carousel">
       <div class="item">
         <!-- Your image here -->
         <img src="static/images/im3.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-         Correlation of the performance of state-of-the-art models on the synthetic and naturalistic tasks.
+         Correlation of the performance of state-of-the-art models on the synthetic and naturalistic Straight line code simulation and Good exchange, Critical path and Critical good exchange, and Parallel path and Clique good exchange.
        </h2>
      </div>
      <div class="item">
       <!-- Your image here -->
       <img src="static/images/im4.jpg" alt="MY ALT TEXT"/>
       <h2 class="subtitle has-text-centered">
-        Correlation of the performance of state-of-the-art models on the synthetic and naturalistic tasks.
+        Correlation of the performance of state-of-the-art models on the synthetic and naturalistic Sorting and Ranking objects, and Nested loops and Recurring calculation.
       </h2>
     </div>
   </div>
@@ -208,11 +233,13 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Relevant Literature</h2>
         <div class="content has-text-justified">
-          Here's a list of relevant articles in the field (under construction):
+          Here's a succinct list of relevant articles in the field:
           <ul>
-            <li><a href="https://arxiv.org/pdf/2401.09074">[LaMalfa2023]</a>: the first article on code simulation with LLMs.</li>
-            <li><a href="https://arxiv.org/pdf/2502.07316">[Li2024]</a>: a recent article by the DeepSeek team on code simulation as a proxy of reasoning tasks.</li>
+            <li><a href="https://arxiv.org/pdf/2401.09074">Code Simulation Challenges for LLMs</a>: the first article on code simulation with LLMs.</li>
+            <li><a href="https://arxiv.org/pdf/2410.06667">LLMs as Code Executors</a>: they do codesim for LLMs.</li>
+            <li><a href="https://arxiv.org/pdf/2502.07316">Code I/O</a>: a recent article by the DeepSeek team on code simulation as a proxy of reasoning tasks. (Late to the party :D)</li>
           </ul>
+          More <a href="https://github.com/codefuse-ai/Awesome-Code-LLM?tab=readme-ov-file#32-code-simulation">here</a>.
         </div>
       </div>
     </div>
