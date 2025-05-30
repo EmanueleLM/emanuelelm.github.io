@@ -1,6 +1,5 @@
 function get_random_image() {
     var image_array = [
-      '/img/bisc.jpeg',
       '/img/lagna.jpeg',
       '/img/lagna1.jpeg',
       '/img/sangiulio.jpeg',
