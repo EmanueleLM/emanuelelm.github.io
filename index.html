@@ -1,125 +1,584 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Dott. Bisc</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
-</style>
-<script src="code.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emanuele La Malfa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #070712;
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-stronger: rgba(255, 255, 255, 0.08);
+      --text-primary: #f6f7fb;
+      --text-secondary: rgba(247, 248, 255, 0.7);
+      --accent: #7f8cff;
+      --accent-strong: #4c59ff;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --max-width: min(960px, 92vw);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at 10% 10%, rgba(30, 25, 95, 0.35), rgba(7, 7, 18, 0.85)) fixed,
+        var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--text-primary);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem clamp(1.2rem, 4vw, 2.5rem);
+      background: rgba(7, 7, 18, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 0.4rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: var(--surface-stronger);
+      color: var(--text-primary);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: var(--surface-stronger);
+      border: none;
+      border-radius: 999px;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .nav-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      position: relative;
+      display: block;
+      height: 2px;
+      width: 18px;
+      background: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+    }
+
+    .nav-toggle span::before {
+      transform: translateY(-6px);
+    }
+
+    .nav-toggle span::after {
+      transform: translateY(6px);
+    }
+
+    .hero {
+      display: grid;
+      gap: clamp(2rem, 6vw, 4rem);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+      padding: clamp(3rem, 9vw, 6rem) clamp(1.5rem, 6vw, 3rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero::before {
+      background: radial-gradient(circle at 15% 20%, rgba(127, 140, 255, 0.35), transparent 60%);
+    }
+
+    .hero::after {
+      background: radial-gradient(circle at 85% 85%, rgba(241, 86, 135, 0.2), transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 3.4rem);
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-bottom: clamp(1.4rem, 3vw, 2.4rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+      color: inherit;
+      background: var(--surface);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+      color: #fff;
+    }
+
+    .button.ghost {
+      background: transparent;
+      border-color: var(--surface-stronger);
+      color: var(--text-primary);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .hero-figure {
+      position: relative;
+      z-index: 1;
+      justify-self: center;
+    }
+
+    .hero-figure img {
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0px 25px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-figure figcaption {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2.5rem, 6vw, 4rem);
+      padding-bottom: clamp(3rem, 7vw, 5rem);
+    }
+
+    section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .section-card {
+      width: var(--max-width);
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: 24px;
+      padding: clamp(2rem, 5vw, 3rem);
+      box-shadow: 0px 18px 40px rgba(5, 6, 25, 0.35);
+    }
+
+    .section-card h2 {
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      letter-spacing: 0.04em;
+    }
+
+    .section-card hr {
+      border: none;
+      border-top: 1px solid var(--surface-stronger);
+      margin: 1.5rem 0;
+      width: 120px;
+    }
+
+    .section-card p {
+      color: var(--text-secondary);
+      margin-top: 0;
+    }
+
+    .news-list {
+      list-style: none;
+      margin: 2rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .news-list li {
+      padding: 1.1rem 1.2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .news-list li:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .news-list li a {
+      font-weight: 500;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1.4rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 2rem;
+    }
+
+    .contact-tile {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 18px;
+      padding: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.98rem;
+    }
+
+    .contact-tile strong {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    footer {
+      width: var(--max-width);
+      margin: 0 auto clamp(3rem, 6vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--text-secondary);
+      padding: 0 clamp(1.2rem, 4vw, 2rem);
+    }
+
+    .socials {
+      display: flex;
+      gap: 0.9rem;
+      font-size: 1.3rem;
+    }
+
+    .socials a {
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.04);
+      transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .socials a:hover,
+    .socials a:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        right: clamp(1.2rem, 5vw, 2rem);
+        top: 68px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        border-radius: 18px;
+        background: rgba(7, 7, 18, 0.95);
+        backdrop-filter: blur(14px);
+        border: 1px solid var(--border-soft);
+        min-width: 200px;
+        opacity: 0;
+        transform: translateY(-12px);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .top-nav {
+        padding-inline: clamp(1rem, 4vw, 1.4rem);
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+  <script defer src="code.js"></script>
 </head>
-<body class="w3-black" onload="document.getElementById('homeph').src=get_random_image();">
 
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-  <!-- Avatar image in top left corner -->
-  <img src="/img/foto.jpg" style="width:100%">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <i class="fa fa-home w3-xxlarge"></i>
-    <p>HOME</p>
-  </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>ABOUT</p>
-  </a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-envelope w3-xxlarge"></i>
-    <p>CONTACT</p>
-  </a>
-</nav>
+<body>
+  <div class="page-shell">
+    <nav class="top-nav" aria-label="Primary">
+      <div class="brand">Emanuele La Malfa</div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="sr-only">Toggle navigation</span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
-    <!-- <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a> -->
-    <!-- <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a> -->
+    <header class="hero" id="home">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Postdoctoral Researcher · Oxford · Alan Turing Institute</p>
+        <h1>Building trustworthy language technologies.</h1>
+        <p class="lead">
+          I explore how large language models behave in complex, multi-agent settings and what makes them robust,
+          explainable, and fair. My work bridges machine learning, linguistics, and computational reasoning.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#about">Discover my research</a>
+          <button class="button ghost" type="button" onclick="window.open('/doc/cv.pdf')">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            <span>Download résumé</span>
+          </button>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <img id="hero-photo" src="" alt="Scenes from travels" loading="lazy">
+        <figcaption>Home? Where is home?</figcaption>
+      </figure>
+    </header>
+
+    <main>
+      <section id="about">
+        <div class="section-card">
+          <h2>About</h2>
+          <hr>
+          <p>
+            I'm a postdoctoral researcher at the University of Oxford and the Alan Turing Institute. I work with
+            <a href="https://www.cs.ox.ac.uk/people/michael.wooldridge/">Prof. Michael Wooldridge</a> and
+            <a href="https://www.jesus.ox.ac.uk/about-jesus-college/our-community/people/nigel-shadbolt/">Prof. Nigel
+              Shadbolt</a> on benchmarking large language models.
+            My Ph.D., completed in 2023 under the supervision of
+            <a href="https://www.cs.ox.ac.uk/people/marta.kwiatkowska/">Prof. Marta Kwiatkowska</a>, explored
+            robustness at the intersection of NLP, computational linguistics, and linguistics.
+          </p>
+          <p>
+            I hold that robustness as commonly formulated in machine learning is
+            <a href="https://arxiv.org/pdf/2112.07605.pdf">ill-posed</a> for language. Curious about details,
+            collaborations, or just a chat? Reach out by email or browse my
+            <a href="https://scholar.google.com/citations?user=4_91m08AAAAJ&hl=en">publications</a>.
+          </p>
+        </div>
+      </section>
+
+      <section id="news">
+        <div class="section-card">
+          <h2>News</h2>
+          <hr>
+          <ul class="news-list">
+            <li>Sept 2025 · our paper <a href="https://arxiv.org/pdf/2505.21298">Large Language Models Miss the
+                Multi-Agent Mark</a> has been accepted at NeurIPS'25 (position track).</li>
+            <li>May 2025 · our paper <a href="https://arxiv.org/pdf/2505.12421">Fixed Point Explainability</a> is
+              available online.</li>
+            <li>Mar. 2025 · our paper <a href="https://arxiv.org/pdf/2502.03568">Code Simulation as a Proxy for
+                High-order Tasks in Large Language Models</a> is available online.</li>
+            <li>Mar. 2025 · our paper <a href="https://arxiv.org/pdf/2503.10408">Understanding the Logical Capabilities
+                of Large Language Models via Out-of-Context Representation Learning</a> is accepted at EMNLP'26
+              (Findings).</li>
+            <li>Mar. 2025 · our paper <a href="https://arxiv.org/pdf/2503.03417">When Claims Evolve: Evaluating and
+                Enhancing the Robustness of Embedding Models Against Misinformation Edits</a> is accepted at ACL'25
+              (Findings).</li>
+            <li>Jan. 2025 · our paper <a href="https://openreview.net/forum?id=SMK0f8JoKF&noteId=EMk5qKtg1N">Language
+                Models are Implicitly Continuous</a> has been accepted at ICLR'25.</li>
+            <li>Jan. 2025 · our paper <a href="https://arxiv.org/pdf/2501.10800">Jailbreaking Large Language Models in
+                Infinitely Many Ways</a> is available online.</li>
+            <li>Dec. 2024 · our paper <a href="https://dl.acm.org/doi/10.1613/jair.1.15865">Language Models as a
+                Service: Overview of a New Paradigm and its Challenges</a> will be presented at AAAI'25 (oral & poster).
+            </li>
+            <li>Oct. 2024 · our paper <a href="https://arxiv.org/pdf/2410.11005v1">One Language, Many Gaps: Evaluating
+                Dialect Fairness and Robustness of Large Language Models in Reasoning Tasks</a> is available online.
+            </li>
+            <li>Oct. 2024 · our paper <a href="https://arxiv.org/pdf/2410.11905">A Scalable Communication Protocol for
+                Networks of Large Language Models</a> is available online.</li>
+            <li>Sept. 2024 · our paper <a href="https://arxiv.org/pdf/2406.11911">A Notion of Complexity for Theory of
+                Mind via Discrete World Models</a> has been accepted at EMNLP'24 (Findings).</li>
+            <li>May 2024 · our paper <a href="http://arxiv.org/abs/2309.16573">Language Models as a Service: Overview of
+                a New Paradigm and its Challenges</a> has been accepted at JAIR.</li>
+            <li>May 2024 · our paper <a href="https://arxiv.org/pdf/2402.02805">Graph-enhanced Large Language Models in
+                Asynchronous Plan Reasoning</a> has been accepted at ICML'24.</li>
+            <li>Apr. 2024 · our paper <a href="https://arxiv.org/pdf/2404.11172.pdf">Deep Neural Networks via Complex
+                Network Theory: a Perspective</a> has been accepted at IJCAI'24.</li>
+            <li>Nov. 2023 · I successfully defended my PhD thesis.</li>
+            <li>Nov. 2023 · our paper <a href="https://arxiv.org/pdf/2305.15425.pdf">Language Tokenizers Introduce
+                Unfairness Between Languages</a> has been accepted at NeurIPS'23.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-card">
+          <h2>Contact</h2>
+          <hr>
+          <div class="contact-grid">
+            <div class="contact-tile">
+              <strong>Location</strong>
+              <span>Oxford, United Kingdom</span>
+            </div>
+            <div class="contact-tile">
+              <strong>Email</strong>
+              <span>{name}.{surname}[at]cs.ox.ac.uk<br><small>(surname follows "Emanuele" without spaces)</small></span>
+            </div>
+            <div class="contact-tile">
+              <strong>Secure contact</strong>
+              <a href="./pkey.txt">Download my PGP key</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Emanuele La Malfa</span>
+      <div class="socials">
+        <a href="https://twitter.com/iperboreo_" aria-label="Twitter">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/emanuele-la-malfa-7769b6129/" aria-label="LinkedIn">
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </div>
+    </footer>
   </div>
-</div>
-
-<!-- Page Content -->
-<div class="w3-padding-large" id="main">
-  <!-- Header/Home -->
-  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-    <h1 class="w3-jumbo"><span class="w3-hide-small">Emanuele La Malfa</h1>
-    <img id="homeph" src="" alt="boy" class="w3-image" width="992" height="1108">
-    <figcaption>Home? Where is home?</figcaption>
-  </header>
-
-  <!-- About Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey">About</h2>
-    <hr style="width:200px" class="w3-opacity">
-    <p>I'm a post doctoral researcher at the University of Oxford and at the Alan Turing Institute: I work on benchmarking Language Models with
-       <a href='https://www.cs.ox.ac.uk/people/michael.wooldridge/'>Prof. Michael Wooldridge</a> and 
-       <a href='https://www.jesus.ox.ac.uk/about-jesus-college/our-community/people/nigel-shadbolt/'>Prof. Nigel Shadbolt</a>. 
-       I completed a Ph.D. at the same institution: my journey started in 2019 and ended in 2023. I have been lucky to be supervised by
-       <a href='https://www.cs.ox.ac.uk/people/marta.kwiatkowska/'>Prof. Marta Kwiatkowska</a>.
-      During my Ph.D. I worked on robustness as a property intersecting Natural Language Processing (NLP), computational linguistics,
-        and linguistics. If you desire to know what I discovered during my Ph.D., is that (I hold the opinion that) robustness as formulated by the machine 
-        learning community is <a href="https://arxiv.org/pdf/2112.07605.pdf">ill-posed</a> for language. You can contact me via email (for anything, really). If you are interested, you can also download my resume; 
-        Scroll through this page and click the download button :) Here's <a href='https://scholar.google.com/citations?user=4_91m08AAAAJ&hl=en'>a list</a> of publications I contributed to.
-    </p>
-
-    <button class="w3-button w3-light-grey w3-padding-large w3-section" type="submit" onclick="window.open('/doc/cv.pdf')">
-      <i class="fa fa-download"></i> Download Resume
-    </button>
-
-    <!-- News Section -->
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="news">
-      <h2 class="w3-text-light-grey">News</h2>
-      <hr style="width:200px" class="w3-opacity">
-      <ul>
-        <li>May 2025: our paper <a href="https://arxiv.org/pdf/2505.21298">Large Language Models Miss the Multi-Agent Mark</a> is available online.</li>
-        <li>May 2025: our paper <a href="https://arxiv.org/pdf/2505.12421">Fixed Point Explainability</a> is available online.</li>
-        <li>Mar. 2025: our paper <a href="https://arxiv.org/pdf/2502.03568">Code Simulation as a Proxy for High-order Tasks in Large Language Models</a> is available online.</li>
-        <li>Mar. 2025: our paper <a href="https://arxiv.org/pdf/2503.10408">Understanding the Logical Capabilities of Large Language Models via Out-of-Context Representation Learning</a> is available online.</li>
-        <li>Mar. 2025: our paper <a href="https://arxiv.org/pdf/2503.03417">When Claims Evolve: Evaluating and Enhancing the Robustness of Embedding Models Against Misinformation Edits</a> is available online.</li>
-        <li>Jan. 2025: our paper <a href="https://openreview.net/forum?id=SMK0f8JoKF&noteId=EMk5qKtg1N">Language Models are Implicitly Continuous</a> has been accepted at ICLR'25.</li>
-        <li>Jan. 2025: our paper <a href="https://arxiv.org/pdf/2501.10800">Jailbreaking Large Language Models in Infinitely Many Ways</a> is available online.</li>
-        <li>Dec. 2024: our paper <a href="https://dl.acm.org/doi/10.1613/jair.1.15865">Language Models as a Service: Overview of a New Paradigm and it its Challenges</a> will be presented at AAAI'25 (oral and poster).</li>
-        <li>Oct. 2024: our paper <a href="https://arxiv.org/pdf/2410.11005v1">One Language, Many Gaps: Evaluating Dialect Fairness and Robustness of Large Language Models in Reasoning Tasks</a> is available online.</li>
-        <li>Oct. 2024: our paper <a href="https://arxiv.org/pdf/2410.11905">A Scalable Communication Protocol for Networks of Large Language Models</a> is available online.</li>
-        <li>Sept. 2024: our paper <a href="https://arxiv.org/pdf/2406.11911">A Notion of Complexity for Theory of Mind via Discrete World Models</a> has been accepted at EMNLP'24 (findings).</li>
-        <li>May 2024: our paper <a href="http://arxiv.org/abs/2309.16573">Language Models as a Service: Overview of a New Paradigm and it its Challenges</a> has been accepted at JAIR.</li>
-        <li>May 2024: our paper <a href="https://arxiv.org/pdf/2402.02805">Graph-enhanced Large Language Models in Asynchronous Plan Reasoning</a> has been accepted at ICML'24.</li>
-        <li>Apr. 2024: our paper <a href="https://arxiv.org/pdf/2404.11172.pdf">Deep Neural Networks via Complex Network Theory: a Perspective</a> has been accepted at IJCAI'24.</li>
-        <li>Nov. 2023: I successfully defended my PhD thesis.</li>
-        <li>Nov. 2023: our paper <a href="https://arxiv.org/pdf/2305.15425.pdf">Language Tokenizers Introduce Unfairness Between Languages</a> has been accepted at NeurIPS'23.</li>
-      </ul>   
-    </div>
-
-  <!-- Contact Section -->
-  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
-    <h2 class="w3-text-light-grey">Contact Me</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <div class="w3-section">
-      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Oxford, UK</p>
-      <!-- <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p> -->
-      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: {name}.{surname}[at]cs.ox.ac.uk. My surname is what comes after Emanuele and does not contain blank spaces.</p>
-      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: <a href="./pkey.txt">PGP</a> <-- Use it for private enquiries.</p>      
-    </div>
-    </div>
-
-  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <a class="fa fa-twitter w3-hover-opacity" href="https://twitter.com/iperboreo_"></a>
-    <a class="fa fa-linkedin w3-hover-opacity" href="https://www.linkedin.com/in/emanuele-la-malfa-7769b6129/"></a>
-  </footer>
-
-</div>
-
 </body>
+
 </html>
