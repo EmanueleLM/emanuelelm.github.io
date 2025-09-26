@@ -176,34 +176,39 @@
     .hero {
       position: relative;
       overflow: hidden;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 6vw, 3rem);
+      justify-content: flex-start;
     }
 
-    .hero-grid {
-      width: var(--max-width);
-      display: grid;
-      grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
-      gap: clamp(2rem, 5vw, 3.5rem);
-      align-items: stretch;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: clamp(2.5rem, 7vw, 3.5rem);
-      box-shadow: 0 0 0 2px rgba(59, 240, 255, 0.08), 0 40px 70px rgba(0, 0, 0, 0.55);
-    }
-
-    .hero-grid::after {
+    .hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: inherit;
+      background: linear-gradient(145deg, rgba(5, 3, 11, 0.1), rgba(5, 3, 11, 0.65));
+      mix-blend-mode: multiply;
       pointer-events: none;
-      background: linear-gradient(135deg, rgba(255, 106, 193, 0.08), transparent 45%, rgba(59, 240, 255, 0.12));
-      mix-blend-mode: screen;
+      z-index: 0;
     }
 
-    .hero-content {
+    .hero-backdrop {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.2) contrast(0.92) brightness(0.9);
+    }
+
+    .hero-overlay {
       position: relative;
       z-index: 1;
+      max-width: min(640px, 92vw);
+      background: rgba(6, 6, 26, 0.85);
+      border: 1px solid rgba(59, 240, 255, 0.28);
+      border-radius: 28px;
+      padding: clamp(2.4rem, 6vw, 3.4rem);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
     }
 
     .hero-eyebrow {
@@ -221,12 +226,6 @@
       font-size: clamp(2.4rem, 5vw, 3.4rem);
       text-transform: uppercase;
       letter-spacing: 0.06em;
-    }
-
-    .lead {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      margin-bottom: clamp(1.5rem, 4vw, 2.6rem);
     }
 
     .hero-actions {
@@ -263,30 +262,6 @@
       transform: translateY(-2px);
       box-shadow: inset 0 -3px 0 rgba(59, 240, 255, 0.5), 0 12px 24px rgba(0, 0, 0, 0.35);
       color: var(--text-primary);
-    }
-
-    .hero-figure {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .hero-figure img {
-      border-radius: 20px;
-      border: 1px solid rgba(59, 240, 255, 0.25);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-      flex: 1;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .hero-figure figcaption {
-      margin-top: 0.9rem;
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      text-align: center;
-      letter-spacing: 0.1em;
     }
 
     .section-card {
@@ -463,18 +438,12 @@
         display: inline-flex;
       }
 
-      .hero-grid {
+      .hero {
+        padding: clamp(2.4rem, 9vw, 5rem) clamp(1.2rem, 6vw, 2.6rem);
+      }
+
+      .hero-overlay {
         padding: clamp(2rem, 8vw, 3rem);
-        grid-template-columns: 1fr;
-      }
-
-      .hero-figure {
-        order: -1;
-        max-height: 60vh;
-      }
-
-      .hero-figure img {
-        height: 100%;
       }
     }
 
@@ -507,37 +476,32 @@
     </nav>
 
     <header class="hero" id="home">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <p class="hero-eyebrow">Postdoctoral Researcher · University of Oxford · Alan Turing Institute</p>
-          <h1>Emanuele La Malfa</h1>
-          <p>
-            I'm a postdoctoral researcher working with
-            <a href="https://www.cs.ox.ac.uk/people/michael.wooldridge/">Prof. Michael Wooldridge</a> and
-            <a href="https://www.jesus.ox.ac.uk/about-jesus-college/our-community/people/nigel-shadbolt/">Prof. Nigel
-              Shadbolt</a>, exploring how to benchmark large language models in complex settings. My Ph.D., completed in
-            2023 under
-            <a href="https://www.cs.ox.ac.uk/people/marta.kwiatkowska/">Prof. Marta Kwiatkowska</a>, examined
-            robustness at the intersection of NLP, computational linguistics, and linguistics.
-          </p>
-          <p>
-            I argue that the standard machine-learning view of robustness is
-            <a href="https://arxiv.org/pdf/2112.07605.pdf">ill-posed</a> for language. I'm always keen to chat about
-            collaborations, ideas, or curious questions—drop me a line or browse my
-            <a href="https://scholar.google.com/citations?user=4_91m08AAAAJ&hl=en">publications</a> for recent work.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#news">Latest updates</a>
-            <button class="button" type="button" onclick="window.open('/doc/cv.pdf')">
-              <i class="fa fa-download" aria-hidden="true"></i>
-              <span>Download résumé</span>
-            </button>
-          </div>
+      <img id="hero-photo" class="hero-backdrop" src="" alt="Scenes from travels" loading="lazy">
+      <div class="hero-overlay">
+        <p class="hero-eyebrow">Postdoctoral Researcher · University of Oxford · Alan Turing Institute</p>
+        <h1>Emanuele La Malfa</h1>
+        <p>
+          I'm a postdoctoral researcher working with
+          <a href="https://www.cs.ox.ac.uk/people/michael.wooldridge/">Prof. Michael Wooldridge</a> and
+          <a href="https://www.jesus.ox.ac.uk/about-jesus-college/our-community/people/nigel-shadbolt/">Prof. Nigel
+            Shadbolt</a>, exploring how to benchmark large language models in complex settings. My Ph.D., completed in
+          2023 under
+          <a href="https://www.cs.ox.ac.uk/people/marta.kwiatkowska/">Prof. Marta Kwiatkowska</a>, examined
+          robustness at the intersection of NLP, computational linguistics, and linguistics.
+        </p>
+        <p>
+          I argue that the standard machine-learning view of robustness is
+          <a href="https://arxiv.org/pdf/2112.07605.pdf">ill-posed</a> for language. I'm always keen to chat about
+          collaborations, ideas, or curious questions—drop me a line or browse my
+          <a href="https://scholar.google.com/citations?user=4_91m08AAAAJ&hl=en">publications</a> for recent work.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#news">Latest updates</a>
+          <button class="button" type="button" onclick="window.open('/doc/cv.pdf')">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            <span>Download résumé</span>
+          </button>
         </div>
-        <figure class="hero-figure">
-          <img id="hero-photo" src="" alt="Scenes from travels" loading="lazy">
-          <figcaption>Home? Where is home?</figcaption>
-        </figure>
       </div>
     </header>
 
