@@ -46,4 +46,14 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
+  const newsList = document.querySelector('.news-list');
+  if (newsList) {
+    const items = Array.from(newsList.querySelectorAll('li'));
+    const trimmed = items.slice(0, 7);
+    newsList.innerHTML = '';
+    trimmed.forEach(function (item) {
+      newsList.appendChild(item);
+    });
+  }
 });
