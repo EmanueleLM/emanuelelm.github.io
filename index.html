@@ -181,9 +181,9 @@
     .hero-grid {
       width: var(--max-width);
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
       gap: clamp(2rem, 5vw, 3.5rem);
-      align-items: center;
+      align-items: stretch;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 28px;
@@ -268,12 +268,17 @@
     .hero-figure {
       position: relative;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .hero-figure img {
       border-radius: 20px;
       border: 1px solid rgba(59, 240, 255, 0.25);
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+      flex: 1;
+      width: 100%;
+      object-fit: cover;
     }
 
     .hero-figure figcaption {
@@ -460,6 +465,16 @@
 
       .hero-grid {
         padding: clamp(2rem, 8vw, 3rem);
+        grid-template-columns: 1fr;
+      }
+
+      .hero-figure {
+        order: -1;
+        max-height: 60vh;
+      }
+
+      .hero-figure img {
+        height: 100%;
       }
     }
 
@@ -485,7 +500,7 @@
         <span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#news">News</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -494,14 +509,25 @@
     <header class="hero" id="home">
       <div class="hero-grid">
         <div class="hero-content">
-          <p class="hero-eyebrow">Postdoctoral Researcher · Oxford · Alan Turing Institute</p>
-          <h1>Building trustworthy language technologies.</h1>
-          <p class="lead">
-            I explore how large language models behave in complex, multi-agent settings and what makes them robust,
-            explainable, and fair. My work bridges machine learning, linguistics, and computational reasoning.
+          <p class="hero-eyebrow">Postdoctoral Researcher · University of Oxford · Alan Turing Institute</p>
+          <h1>Emanuele La Malfa</h1>
+          <p>
+            I'm a postdoctoral researcher working with
+            <a href="https://www.cs.ox.ac.uk/people/michael.wooldridge/">Prof. Michael Wooldridge</a> and
+            <a href="https://www.jesus.ox.ac.uk/about-jesus-college/our-community/people/nigel-shadbolt/">Prof. Nigel
+              Shadbolt</a>, exploring how to benchmark large language models in complex settings. My Ph.D., completed in
+            2023 under
+            <a href="https://www.cs.ox.ac.uk/people/marta.kwiatkowska/">Prof. Marta Kwiatkowska</a>, examined
+            robustness at the intersection of NLP, computational linguistics, and linguistics.
+          </p>
+          <p>
+            I argue that the standard machine-learning view of robustness is
+            <a href="https://arxiv.org/pdf/2112.07605.pdf">ill-posed</a> for language. I'm always keen to chat about
+            collaborations, ideas, or curious questions—drop me a line or browse my
+            <a href="https://scholar.google.com/citations?user=4_91m08AAAAJ&hl=en">publications</a> for recent work.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#about">Discover my research</a>
+            <a class="button primary" href="#news">Latest updates</a>
             <button class="button" type="button" onclick="window.open('/doc/cv.pdf')">
               <i class="fa fa-download" aria-hidden="true"></i>
               <span>Download résumé</span>
@@ -516,27 +542,6 @@
     </header>
 
     <main>
-      <section id="about">
-        <div class="section-card">
-          <h2>About</h2>
-          <hr>
-          <p>
-            I'm a postdoctoral researcher at the University of Oxford and the Alan Turing Institute. I work with
-            <a href="https://www.cs.ox.ac.uk/people/michael.wooldridge/">Prof. Michael Wooldridge</a> and
-            <a href="https://www.jesus.ox.ac.uk/about-jesus-college/our-community/people/nigel-shadbolt/">Prof. Nigel
-              Shadbolt</a> on benchmarking large language models. My Ph.D., completed in 2023 under
-            <a href="https://www.cs.ox.ac.uk/people/marta.kwiatkowska/">Prof. Marta Kwiatkowska</a>, explored
-            robustness at the intersection of NLP, computational linguistics, and linguistics.
-          </p>
-          <p>
-            I hold that robustness as commonly formulated in machine learning is
-            <a href="https://arxiv.org/pdf/2112.07605.pdf">ill-posed</a> for language. Curious about details,
-            collaborations, or just a chat? Reach out by email or browse my
-            <a href="https://scholar.google.com/citations?user=4_91m08AAAAJ&hl=en">publications</a>.
-          </p>
-        </div>
-      </section>
-
       <section id="news">
         <div class="section-card">
           <h2>News</h2>
