@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Emanuele La Malfa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     :root {
@@ -212,8 +215,8 @@
     }
 
     .hero-eyebrow {
-      font-size: 0.82rem;
-      letter-spacing: 0.26em;
+      font-size: clamp(0.72rem, 2vw, 0.82rem);
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent-alt);
       margin-bottom: 1rem;
@@ -223,9 +226,9 @@
       margin: 0 0 1rem 0;
       font-family: 'Space Grotesk', system-ui, sans-serif;
       font-weight: 700;
-      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-size: clamp(2.2rem, 4.2vw, 2.9rem);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
     }
 
     .hero-actions {
@@ -409,6 +412,22 @@
       border: 0;
     }
 
+    .hero-caption {
+      position: absolute;
+      right: clamp(1rem, 5vw, 2.6rem);
+      bottom: clamp(1.2rem, 5vw, 2.8rem);
+      z-index: 2;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: rgba(6, 6, 26, 0.6);
+      padding: 0.5rem 0.8rem;
+      border-radius: 10px;
+      border: 1px solid rgba(59, 240, 255, 0.25);
+      color: var(--accent-alt);
+    }
+
     @media (max-width: 768px) {
       .nav-links {
         position: absolute;
@@ -445,6 +464,13 @@
       .hero-overlay {
         padding: clamp(2rem, 8vw, 3rem);
       }
+
+      .hero-caption {
+        right: clamp(0.9rem, 6vw, 1.8rem);
+        bottom: clamp(1rem, 6vw, 2rem);
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+      }
     }
 
     @media (max-width: 540px) {
@@ -460,6 +486,7 @@
   </style>
   <script defer src="code.js"></script>
 </head>
+
 <body>
   <div class="page-shell">
     <nav class="top-nav" aria-label="Primary">
@@ -497,12 +524,18 @@
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#news">Latest updates</a>
+          <a class="button" href="https://scholar.google.com/citations?user=4_91m08AAAAJ&hl=en" target="_blank"
+            rel="noopener noreferrer">
+            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            <span>Google Scholar</span>
+          </a>
           <button class="button" type="button" onclick="window.open('/doc/cv.pdf')">
             <i class="fa fa-download" aria-hidden="true"></i>
             <span>Download résumé</span>
           </button>
         </div>
       </div>
+      <span class="hero-caption">Home, where is home?</span>
     </header>
 
     <main>
@@ -511,24 +544,40 @@
           <h2>News</h2>
           <hr>
           <ul class="news-list">
-            <li>May 2025 · our paper <a href="https://arxiv.org/pdf/2505.21298">Large Language Models Miss the
-                Multi-Agent Mark</a> is available online.</li>
-            <li>May 2025 · our paper <a href="https://arxiv.org/pdf/2505.12421">Fixed Point Explainability</a> is available online.</li>
-            <li>Mar. 2025 · our paper <a href="https://arxiv.org/pdf/2502.03568">Code Simulation as a Proxy for
-                High-order Tasks in Large Language Models</a> is available online.</li>
-            <li>Mar. 2025 · our paper <a href="https://arxiv.org/pdf/2503.10408">Understanding the Logical Capabilities of Large Language Models via Out-of-Context Representation Learning</a> is accepted at EMNLP'26 (Findings).</li>
-            <li>Mar. 2025 · our paper <a href="https://arxiv.org/pdf/2503.03417">When Claims Evolve: Evaluating and Enhancing the Robustness of Embedding Models Against Misinformation Edits</a> is accepted at ACL'25 (Findings).</li>
-            <li>Jan. 2025 · our paper <a href="https://openreview.net/forum?id=SMK0f8JoKF&noteId=EMk5qKtg1N">Language Models are Implicitly Continuous</a> has been accepted at ICLR'25.</li>
-            <li>Jan. 2025 · our paper <a href="https://arxiv.org/pdf/2501.10800">Jailbreaking Large Language Models in Infinitely Many Ways</a> is available online.</li>
-            <li>Dec. 2024 · our paper <a href="https://dl.acm.org/doi/10.1613/jair.1.15865">Language Models as a Service: Overview of a New Paradigm and its Challenges</a> will be presented at AAAI'25 (oral & poster).</li>
-            <li>Oct. 2024 · our paper <a href="https://arxiv.org/pdf/2410.11005v1">One Language, Many Gaps: Evaluating Dialect Fairness and Robustness of Large Language Models in Reasoning Tasks</a> is available online.</li>
-            <li>Oct. 2024 · our paper <a href="https://arxiv.org/pdf/2410.11905">A Scalable Communication Protocol for Networks of Large Language Models</a> is available online.</li>
-            <li>Sept. 2024 · our paper <a href="https://arxiv.org/pdf/2406.11911">A Notion of Complexity for Theory of Mind via Discrete World Models</a> has been accepted at EMNLP'24 (Findings).</li>
-            <li>May 2024 · our paper <a href="http://arxiv.org/abs/2309.16573">Language Models as a Service: Overview of a New Paradigm and its Challenges</a> has been accepted at JAIR.</li>
-            <li>May 2024 · our paper <a href="https://arxiv.org/pdf/2402.02805">Graph-enhanced Large Language Models in Asynchronous Plan Reasoning</a> has been accepted at ICML'24.</li>
-            <li>Apr. 2024 · our paper <a href="https://arxiv.org/pdf/2404.11172.pdf">Deep Neural Networks via Complex Network Theory: a Perspective</a> has been accepted at IJCAI'24.</li>
+            <li>Sept. 2025 · our paper <a href="https://arxiv.org/pdf/2505.21298">Large Language Models Miss the
+                Multi-Agent Mark</a> has been accepted as a position paper at NeurIPS'25 (acceptance ~5%).</li>
+            <li>July 2025 · our paper <a href="https://arxiv.org/pdf/2503.10408">Understanding the Logical Capabilities
+                of Large Language Models via Out-of-Context Representation Learning</a> is accepted at EMNLP'25
+              (Findings).</li>
+            <li>May 2025 · our paper <a href="https://arxiv.org/pdf/2505.12421">Fixed Point Explainability</a> is
+              available online.</li>
+            <li>Mar. 2025 · our paper <a href="https://arxiv.org/pdf/2503.03417">Assessing Dialect Fairness and
+                Robustness of Large Language Models in Reasoning Tasks</a> is accepted at ACL'25 (main).</li>
+            <li>Mar. 2025 · our paper <a href="https://arxiv.org/pdf/2503.03417">When Claims Evolve: Evaluating and
+                Enhancing the Robustness of Embedding Models Against Misinformation Edits</a> is accepted at ACL'25
+              (Findings).</li>
+            <li>Jan. 2025 · our paper <a href="https://openreview.net/forum?id=SMK0f8JoKF&noteId=EMk5qKtg1N">Language
+                Models are Implicitly Continuous</a> has been accepted at ICLR'25.</li>
+            <li>Dec. 2024 · our paper <a href="https://dl.acm.org/doi/10.1613/jair.1.15865">Language Models as a
+                Service: Overview of a New Paradigm and its Challenges</a> has been published by JAIR and will be
+              presented at AAAI'25 (oral).
+            </li>
+            <li>Oct. 2024 · our paper <a href="https://arxiv.org/pdf/2410.11005v1">One Language, Many Gaps: Evaluating
+                Dialect Fairness and Robustness of Large Language Models in Reasoning Tasks</a> is available online.
+            </li>
+            <li>Oct. 2024 · our paper <a href="https://arxiv.org/pdf/2410.11905">A Scalable Communication Protocol for
+                Networks of Large Language Models</a> is available online.</li>
+            <li>Sept. 2024 · our paper <a href="https://arxiv.org/pdf/2406.11911">A Notion of Complexity for Theory of
+                Mind via Discrete World Models</a> has been accepted at EMNLP'24 (Findings).</li>
+            <li>May 2024 · our paper <a href="http://arxiv.org/abs/2309.16573">Language Models as a Service: Overview of
+                a New Paradigm and its Challenges</a> has been accepted at JAIR.</li>
+            <li>May 2024 · our paper <a href="https://arxiv.org/pdf/2402.02805">Graph-enhanced Large Language Models in
+                Asynchronous Plan Reasoning</a> has been accepted at ICML'24.</li>
+            <li>Apr. 2024 · our paper <a href="https://arxiv.org/pdf/2404.11172.pdf">Deep Neural Networks via Complex
+                Network Theory: a Perspective</a> has been accepted at IJCAI'24.</li>
             <li>Nov. 2023 · I successfully defended my PhD thesis.</li>
-            <li>Nov. 2023 · our paper <a href="https://arxiv.org/pdf/2305.15425.pdf">Language Tokenizers Introduce Unfairness Between Languages</a> has been accepted at NeurIPS'23.</li>
+            <li>Nov. 2023 · our paper <a href="https://arxiv.org/pdf/2305.15425.pdf">Language Tokenizers Introduce
+                Unfairness Between Languages</a> has been accepted at NeurIPS'23.</li>
           </ul>
         </div>
       </section>
@@ -568,4 +617,5 @@
     </footer>
   </div>
 </body>
+
 </html>
